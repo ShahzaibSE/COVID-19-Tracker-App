@@ -13,6 +13,7 @@ class App extends React.Component {
 
   async componentDidMount(){
     const data = await getData()
+    console.log(data)
   }
 
   render(){
