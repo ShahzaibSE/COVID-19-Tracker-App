@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+import styles from './App.module.css';
 // Components.
 // import {Cards, Charts, CountryPicker} from "./components"
 import {Cards} from "./components/Cards/Cards"
@@ -26,10 +26,10 @@ class App extends React.Component {
     console.log(`API Metadata`)
     console.log(data)
     return(
-      <div>
+      <div className={styles.container}>
         <Cards data={data}/>
-        <Charts />
         <CountryPicker />
+        <Charts />
       </div>
     )
   }
