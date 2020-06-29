@@ -10,16 +10,24 @@ import {CountryPicker} from "./components/CountryPicker/CountryPicker"
 import {getData} from "./api/index.api"
 
 class App extends React.Component {
+  state = {
+    data: {},
+    country: '',
+  }
 
   async componentDidMount(){
     const data = await getData()
     console.log(data)
+    this.setState({data})
   }
 
   render(){
+    const {data} = this.state
+    console.log(`API Metadata`)
+    console.log(data)
     return(
       <div>
-        <Cards />
+        <Cards data={data}/>
         <Charts />
         <CountryPicker />
       </div>
