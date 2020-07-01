@@ -7,7 +7,7 @@ import {getDailyData} from "./../../api/index.api"
 import styles from "./Charts.module.scss"
 
 
-export const Charts = () => {
+export const Charts = ({data:{confirmed,recovered,deaths}, country}) => {
     const [dailyData, setDailyData] = useState([])
 
     useEffect(()=> {
@@ -40,10 +40,29 @@ export const Charts = () => {
         }}/> : null
     ) 
 
+    const bar_chat = (
+        confirmed ? 
+        <Bar 
+        data={{
+            labels:['Infected', 'Recovered', 'Deaths'],
+            datasets: [
+                {
+                  label: 'People',
+                  backgroundColor: ['rgba(0, 0, 255, 0.5)', 'rgba(0, 255, 0, 0.5)', 'rgba(255, 0, 0, 0.5)'],
+                  data: [confirmed.value, recovered.value, deaths.value],
+                },
+              ],
+        }}
+        options={{
+            legend:{display:false},
+            title:{display:true, text:`Current state in ${country}`}
+        }}/>: null
+    )
+
     return (
        <Grid container justify="center" alignItems="center"> 
         <div className={styles.container}>
-                    {line_chart}
+                    {country ? bar_chat : line_chart}
         </div>
         </Grid>
     )

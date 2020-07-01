@@ -1,5 +1,6 @@
 import React from 'react'
-import {Card, CardContent, Typography, Grid, makeStyles} from "@material-ui/core"
+import {Card, CardContent, Typography, Grid, makeStyles, CircularProgress,
+       Paper} from "@material-ui/core"
 import CountUp from "react-countup"
 
 import styles from "./Cards.module.scss"
@@ -9,10 +10,16 @@ import LinearProgress from '@material-ui/core/LinearProgress';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    '& > * + *': {
-      marginTop: theme.spacing(2),
-    },
+    // '& > * + *': {
+    //   marginTop: theme.spacing(2),
+    // },
   },
+  paper_container: {
+      margin:20,
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center"
+  }
 }));
 
 export const Cards = ({data}) => {
@@ -27,7 +34,9 @@ export const Cards = ({data}) => {
             </div>
         )
     }
-    return (
+    return ( 
+      <Grid container spacing={1}>   
+      <Paper className={classes.paper_container}>  
         <div className={styles.container}>
             <Grid container spacing={3} justify="center">
                 <Grid item component={Card} xs={12} md={3} lg={3} 
@@ -63,5 +72,7 @@ export const Cards = ({data}) => {
                 </Grid>
             </Grid>
         </div>
+      </Paper>
+      </Grid>
     )
 }

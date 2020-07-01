@@ -3,9 +3,14 @@ import { DialogTitle } from "@material-ui/core"
 
 const baseURL = "https://covid19.mathdro.id/api"
 
-export const getData = async () => {
+export const getData = async (country) => {
     try {
-       const { data: {confirmed, recovered, deaths ,lastUpdate} } = await axios.get(baseURL)
+       let changeable_url = baseURL
+       //
+       if (country) {
+           changeable_url = `${baseURL}/countries/${country}`
+       }
+       const { data: {confirmed, recovered, deaths ,lastUpdate} } = await axios.get(changeable_url)
        const response = {
            confirmed,
            recovered,
@@ -30,6 +35,22 @@ export const getDailyData = async () => {
       }))
       //
       return specific_data
+    }
+    catch(error){
+        console.log(error)
+    }
+}
+
+export const getCountries = async () => {
+    try{
+      const {data:{countries}} = await axios.get(`${baseURL}/countries`)
+      const country_list = countries.map(country => (
+          country.name
+      ))
+      //
+      console.log("Country list from API")
+      console.log(countries)
+      return country_list
     }
     catch(error){
         console.log(error)
