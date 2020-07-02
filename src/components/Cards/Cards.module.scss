@@ -6,7 +6,10 @@
   }
 
 .card{
-    margin: 0px 2% !important
+    margin: 0px 2% !important;
+    min-width: 250px;
+    margin-bottom: 20px;
+    // padding-bottom:20px
 }
 
 .infected{
@@ -23,8 +26,18 @@
     border-bottom: 10px solid rgba(0, 255,0, 0.5)
 }
 
+.infected_death_recovered_cases_logo{
+    width: 80px;
+    float:right;
+}
+
 @media (max-width:770px) {
     .card{
         margin: 2% 0 !important
+    }
+
+    .infected_death_recovered_cases_logo{
+        width: 40px;
+        float:right;
     }
 }
