@@ -60,10 +60,8 @@ export const Charts = ({data:{confirmed,recovered,deaths}, country}) => {
     )
 
     return (
-       <Grid container justify="center" alignItems="center"> 
-        <div className={styles.container}>
-                    {country ? bar_chat : line_chart}
-        </div>
-        </Grid>
+            <div className={styles.container}>
+                        {country ? bar_chat : line_chart}
+            </div>
     )
 }

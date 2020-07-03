@@ -16,7 +16,6 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom:20
   },
   paper_container: {
-      width:'20%',
       margin:18,
       padding: theme.spacing(2)
     //   display: "flex",
@@ -43,7 +42,7 @@ export const Cards = ({data}) => {
         )
     }
     return ( 
-      <Grid container direction={gridDirection} spacing={24}>   
+      <Grid container direction={gridDirection}>   
       <Paper className={classes.paper_container}>  
         <div className={styles.container}>
             {/* <Grid container spacing={spacing} justify="center"> */}

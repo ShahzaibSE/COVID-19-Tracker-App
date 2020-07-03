@@ -33,7 +33,7 @@ export const CountryPicker = ({handleCountryChange}) => {
     },[]) // If keys are changed then state will be updated.
     //
      return (
-       <div className={styles.container}> 
+       <div> 
             <FormControl className={classes.formControl}>
                 <Select defaultValue="Global" onChange={(e)=>handleCountryChange(e.target.value)} placeholder="Select Country"> 
                   <option value="">Global</option>

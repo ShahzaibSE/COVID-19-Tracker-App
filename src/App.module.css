@@ -4,6 +4,14 @@
   flex-direction: column;
 }
 
+.country_picker_container{
+  width:250px
+}
+
+.chart_container{
+  /* width:'55%' */
+}
+
 .image {
   width: 370px;
   margin-top: 50px;

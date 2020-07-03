@@ -1,0 +1,27 @@
+.container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .country_picker_container{
+    width:250px
+  }
+  
+  .chart_container{
+    /* width:'55%' */
+  }
+  
+  .image {
+    width: 370px;
+    margin-top: 50px;
+  }
+  
+  @media (max-width:770px){
+    .container{
+      margin: 0 10%;
+    }
+    .image{
+      width:100%
+    }
+  }
