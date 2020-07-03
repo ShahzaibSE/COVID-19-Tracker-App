@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import styles from './App.module.css';
+import cx from "classnames"
 // Components.
 // import {Cards, Charts, CountryPicker} from "./components"
 import {Cards} from "./components/Cards/Cards"
@@ -58,19 +59,19 @@ class App extends React.Component {
        </div>
        </Grid>
      </Grid> 
-     <Grid container spacing={1}> 
+     <Grid container spacing={1} justify="center"> 
       <Grid item xs={4}>
           <div className={styles.container}>
             <Cards data={data}/>
           </div>
        </Grid>
-        <Grid item xs={4} justify="left">
-          <div className={styles.container}>
+        <Grid item xs={8} justify="center">
+          <br/>
+          <div className={styles.country_picker_container}>
             <CountryPicker handleCountryChange={this.handleCountryChange}/> 
           </div>
-        </Grid>
-        <Grid xs={4} justify="left">
-          <div className={styles.container}>
+          <br/>
+          <div className={styles.chart_container}>
                 <Charts data={data} country={country}/>
             </div>
         </Grid>

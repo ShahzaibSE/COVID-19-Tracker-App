@@ -1,8 +1,8 @@
 .container {
     // display: flex;
     // justify-content: center;
-    min-width: 55%;
-    min-height: 55%
+    width: 100% !important;
+    // height: 75% !important;
   }
 
   @media (max-width:770px) {
