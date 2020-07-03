@@ -1,6 +1,6 @@
 import React from 'react'
 import {Card, CardContent, Typography, Grid, makeStyles, CircularProgress,
-       Paper} from "@material-ui/core"
+       Paper, createMuiTheme, ThemeProvider} from "@material-ui/core"
 import CountUp from "react-countup"
 
 import styles from "./Cards.module.scss"
@@ -13,22 +13,25 @@ import infected_logo from "./../../images/infected-cases.png"
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%',
-    // '& > * + *': {
-    //   marginTop: theme.spacing(2),
-    // },
+    paddingBottom:20
   },
   paper_container: {
-      width:'30%',
-      margin:20,
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center"
+      width:'20%',
+      margin:18,
+      padding: theme.spacing(2)
+    //   display: "flex",
+    //   flexDirection: "column",
+    //   alignItems: "center",
+  },
+  control:{
+    padding: theme.spacing(2)
   }
 }));
 
 export const Cards = ({data}) => {
     const {confirmed, deaths, recovered, lastUpdate} = data
+    const {gridDirection, setDirection} = React.useState("row")
+    const [spacing, setSpacing] = React.useState(2)
     const classes = useStyles()
     console.log("Cards Data")
     console.log(confirmed)
@@ -40,10 +43,10 @@ export const Cards = ({data}) => {
         )
     }
     return ( 
-      <Grid container spacing={2} direction="column" justify="center">   
+      <Grid container direction={gridDirection} spacing={24}>   
       <Paper className={classes.paper_container}>  
         <div className={styles.container}>
-            <Grid container spacing={3} justify="center">
+            {/* <Grid container spacing={spacing} justify="center"> */}
                 <Grid item component={Card} xs={12} md={3} lg={3} 
                       className={cx(styles.card, styles.infected)}>
                     <CardContent>
@@ -78,9 +81,9 @@ export const Cards = ({data}) => {
                         <img className={styles.infected_death_recovered_cases_logo} src={deaths_logo} alt="Deaths"/>
                     </CardContent>
                 </Grid>
-            </Grid>
+            {/* </Grid> */}
         </div>
       </Paper>
-      </Grid>
+    </Grid>
     )
 }
