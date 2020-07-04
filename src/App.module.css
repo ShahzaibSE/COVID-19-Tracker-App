@@ -17,6 +17,11 @@
   margin-right: 30px !important
 }
 
+.chart_country_picker_card{
+  margin-top:22px !important; 
+  margin-bottom:22px !important;
+}
+
 .image {
   width: 370px;
   margin-top: 50px;

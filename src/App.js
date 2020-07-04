@@ -9,7 +9,7 @@ import {Charts} from "./components/Charts/Charts"
 import {CountryPicker} from "./components/CountryPicker/CountryPicker"
 // API.
 import {getData} from "./api/index.api"
-import { Grid, makeStyles } from '@material-ui/core';
+import { Grid, makeStyles, Card, Paper } from '@material-ui/core';
 // Images
 import covid_19_image from "./images/covid-19-title.png"
 // import classes from './App.module.css';
@@ -60,26 +60,25 @@ class App extends React.Component {
        </Grid>
      </Grid> 
      <Grid container spacing={1} justify="center"> 
-      <Grid item xs={4}>
+      <Grid item xs={3}>
           <div className={styles.container}>
             <Cards data={data}/>
           </div>
        </Grid>
-        <Grid item xs={8} justify="center">
-          <br/>
-          <div className={styles.country_picker_container}>
-            <CountryPicker handleCountryChange={this.handleCountryChange}/> 
-          </div>
-          <br/>
-          <div className={styles.chart_container}>
+        <Grid item component={Paper} className={styles.chart_country_picker_card} xs={8} justify="center">
+            <div className={styles.country_picker_container}>
+              <CountryPicker handleCountryChange={this.handleCountryChange}/> 
+            </div>
+            <br/>
+            <div className={styles.chart_container}>
+                  <Charts data={data} country={country}/>
+              </div>
+          </Grid>
+          {/* <Grid item xs={12}>
+            <div className={styles.container}>
                 <Charts data={data} country={country}/>
             </div>
-        </Grid>
-        {/* <Grid item xs={12}>
-          <div className={styles.container}>
-              <Charts data={data} country={country}/>
-          </div>
-        </Grid> */}
+          </Grid> */}
       </Grid>
      </div> 
     )

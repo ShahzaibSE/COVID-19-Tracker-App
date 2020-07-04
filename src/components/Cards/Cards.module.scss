@@ -15,16 +15,26 @@
 
 .infected{
     border-bottom: 10px solid rgba(0, 0,255, 0.5);
-    // background-color: lightskyblue !important;
-    // color: blue !important
+}
+.infected_typography_color{
+    background-color:rgb(251, 242, 233) !important;
+    color: rgb(30, 136, 229) !important
 }
 
 .deaths{
     border-bottom: 10px solid rgba(255, 0,0, 0.5)
 }
+.deaths_typography_color{
+    background-color:rgb(244, 199, 195) !important;
+    color:rgb(255, 0, 0) !important;
+}
 
 .recovered{
     border-bottom: 10px solid rgba(0, 255,0, 0.5)
+}
+.recovered_typography_color{
+    background-color: rgb(200, 230, 201) !important;
+    color: rgb(67, 160, 71) !important;
 }
 
 .infected_death_recovered_cases_logo{
