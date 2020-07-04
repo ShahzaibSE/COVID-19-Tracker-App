@@ -30,6 +30,7 @@ class App extends React.Component {
   state = {
     data: {},
     country: '',
+    view_type: 'Bar'
   }
 
   async componentDidMount(){
@@ -40,13 +41,17 @@ class App extends React.Component {
 
   handleCountryChange = async (country)=>{
     const selectedCountry =  await getData(country)
-    console.log("Selected country")
-    console.log(selectedCountry)
     this.setState({data: selectedCountry, country })
   }
 
+  handleViewType = (view_type) => {
+    console.log("App.js view type")
+    console.log(view_type)
+    this.setState({view_type})
+  }
+
   render(){
-    const {data, country} = this.state
+    const {data, country, view_type} = this.state
     console.log(`API Metadata`)
     console.log(data)
     return(
@@ -66,12 +71,13 @@ class App extends React.Component {
           </div>
        </Grid>
         <Grid item component={Paper} className={styles.chart_country_picker_card} xs={8} justify="center">
-            <div className={styles.country_picker_container}>
-              <CountryPicker handleCountryChange={this.handleCountryChange}/> 
+            <div>
+              <CountryPicker handleCountryChange={this.handleCountryChange} 
+                             handleViewType={this.handleViewType}/> 
             </div>
             <br/>
             <div className={styles.chart_container}>
-                  <Charts data={data} country={country}/>
+                  <Charts data={data} country={country} view_type={view_type}/>
               </div>
           </Grid>
           {/* <Grid item xs={12}>

@@ -1,15 +1,14 @@
 import React, {useState, useEffect} from 'react'
-import {Line, Bar} from "react-chartjs-2"
-import {Grid, Select} from "@material-ui/core"
+import {Line, Bar, Pie} from "react-chartjs-2"
+import {Grid, Select, FormControl} from "@material-ui/core"
 // API.
 import {getDailyData} from "./../../api/index.api"
 // StyleSheet 
 import styles from "./Charts.module.scss"
 
 
-export const Charts = ({data:{confirmed,recovered,deaths}, country}) => {
+export const Charts = ({data:{confirmed,recovered,deaths}, country, view_type}) => {
     const [dailyData, setDailyData] = useState([])
-
     useEffect(()=> {
         const fetchDailyData = async () => {
             // Async code here.
@@ -59,9 +58,28 @@ export const Charts = ({data:{confirmed,recovered,deaths}, country}) => {
         }}/>: null
     )
 
-    return (
-            <div className={styles.container}>
-                        {country ? bar_chat : line_chart}
-            </div>
+    const pie_chart = (
+        confirmed ?
+         <Pie 
+            data={{
+                labels:['Infected', 'Recovered', 'Deaths'],
+                datasets: [
+                    {
+                    label: 'People',
+                    backgroundColor: ['rgba(0, 0, 255, 0.5)', 'rgba(0, 255, 0, 0.5)', 'rgba(255, 0, 0, 0.5)'],
+                    data: [confirmed.value, recovered.value, deaths.value],
+                    },
+                ],
+            }}
+         /> :  null
     )
+    if (country) {
+        if (view_type == 'Bar') {
+            return bar_chat
+        }else if (view_type == 'Pie'){
+            return pie_chart
+        }
+    }else {
+        return line_chart
+    }
 }
