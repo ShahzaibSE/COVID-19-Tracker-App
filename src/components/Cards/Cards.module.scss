@@ -2,29 +2,53 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 50px 0;
+    // margin: 50px 0;
+    padding-bottom: 20px;
   }
 
 .card{
-    margin: 0px 2% !important
+    margin: 0px 2% !important;
+    min-width: 250px;
+    margin-bottom: 15px !important;
+    // padding-bottom:20px
 }
 
 .infected{
     border-bottom: 10px solid rgba(0, 0,255, 0.5);
-    // background-color: lightskyblue !important;
-    // color: blue !important
+}
+.infected_typography_color{
+    background-color:rgb(251, 242, 233) !important;
+    color: rgb(30, 136, 229) !important
 }
 
 .deaths{
     border-bottom: 10px solid rgba(255, 0,0, 0.5)
 }
+.deaths_typography_color{
+    background-color:rgb(244, 199, 195) !important;
+    color:rgb(255, 0, 0) !important;
+}
 
 .recovered{
     border-bottom: 10px solid rgba(0, 255,0, 0.5)
+}
+.recovered_typography_color{
+    background-color: rgb(200, 230, 201) !important;
+    color: rgb(67, 160, 71) !important;
+}
+
+.infected_death_recovered_cases_logo{
+    width: 80px;
+    float:right;
 }
 
 @media (max-width:770px) {
     .card{
         margin: 2% 0 !important
+    }
+
+    .infected_death_recovered_cases_logo{
+        width: 40px;
+        float:right;
     }
 }

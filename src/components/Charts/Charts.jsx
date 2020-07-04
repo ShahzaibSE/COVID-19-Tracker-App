@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {Line, Bar} from "react-chartjs-2"
-import {Grid} from "@material-ui/core"
+import {Grid, Select} from "@material-ui/core"
 // API.
 import {getDailyData} from "./../../api/index.api"
 // StyleSheet 
@@ -60,10 +60,8 @@ export const Charts = ({data:{confirmed,recovered,deaths}, country}) => {
     )
 
     return (
-       <Grid container justify="center" alignItems="center"> 
-        <div className={styles.container}>
-                    {country ? bar_chat : line_chart}
-        </div>
-        </Grid>
+            <div className={styles.container}>
+                        {country ? bar_chat : line_chart}
+            </div>
     )
 }

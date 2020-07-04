@@ -1,29 +1,36 @@
 import React from 'react'
 import {Card, CardContent, Typography, Grid, makeStyles, CircularProgress,
-       Paper} from "@material-ui/core"
+       Paper, createMuiTheme, ThemeProvider} from "@material-ui/core"
 import CountUp from "react-countup"
 
 import styles from "./Cards.module.scss"
 import cx from "classnames"
 import LinearProgress from '@material-ui/core/LinearProgress';
+// Images.
+import deaths_logo from "./../../images/death-cases.png"
+import recovered_logo from "./../../images/recovered-cases.png"
+import infected_logo from "./../../images/infected-cases.png"
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%',
-    // '& > * + *': {
-    //   marginTop: theme.spacing(2),
-    // },
+    paddingBottom:20
   },
   paper_container: {
-      margin:20,
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center"
+      margin:18,
+      padding: theme.spacing(2)
+    //   display: "flex",
+    //   flexDirection: "column",
+    //   alignItems: "center",
+  },
+  control:{
+    padding: theme.spacing(2)
   }
 }));
 
 export const Cards = ({data}) => {
     const {confirmed, deaths, recovered, lastUpdate} = data
+    const {gridDirection, setDirection} = React.useState("row")
+    const [spacing, setSpacing] = React.useState(2)
     const classes = useStyles()
     console.log("Cards Data")
     console.log(confirmed)
@@ -35,44 +42,49 @@ export const Cards = ({data}) => {
         )
     }
     return ( 
-      <Grid container spacing={1}>   
+      <Grid container direction={gridDirection}>   
       <Paper className={classes.paper_container}>  
         <div className={styles.container}>
-            <Grid container spacing={3} justify="center">
+            {/* <Grid container spacing={spacing} justify="center"> */}
                 <Grid item component={Card} xs={12} md={3} lg={3} 
-                      className={cx(styles.card, styles.infected)}>
+                      className={cx(styles.card, styles.infected, styles.infected_typography_color)}>
                     <CardContent>
-                        <Typography color="textSecondary" gutterBottom>Infected</Typography>
+                        <Typography  gutterBottom><strong>Infected</strong></Typography>
                         <Typography variant="h5">
                             <CountUp start={0} end={confirmed.value} duration={2.5} separator="," />
                         </Typography>
-                        <Typography color="textSecondary">{new Date(lastUpdate).toDateString()}</Typography>
-                        <Typography variant="h5">Number of Active Cases of COVID-19</Typography>
+                        <Typography>{new Date(lastUpdate).toDateString()}</Typography>
+                        {/* <Typography variant="h5">Number of Active Cases of COVID-19</Typography> */}
+                        <img className={styles.infected_death_recovered_cases_logo} src={infected_logo} alt="Infected"/>
                     </CardContent>
                 </Grid>
-                <Grid item component={Card} xs={12} md={3} lg={3} className={cx(styles.card, styles.recovered)}>
+                <Grid item component={Card} xs={12} md={3} lg={3} className={cx(styles.card, styles.recovered,
+                                                                                styles.recovered_typography_color)}>
                     <CardContent>
-                        <Typography color="textSecondary" gutterBottom>Recovered</Typography>
+                        <Typography gutterBottom><strong>Recovered</strong></Typography>
                         <Typography variant="h5">
                             <CountUp start={0} end={recovered.value} duration={2.5} separator="," />
                         </Typography>
-                        <Typography color="textSecondary">{new Date(lastUpdate).toDateString()}</Typography>
-                        <Typography variant="h5">Number of Active Cases of COVID-19</Typography>
+                        <Typography>{new Date(lastUpdate).toDateString()}</Typography>
+                        {/* <Typography variant="h5">Number of Active Cases of COVID-19</Typography> */}
+                        <img className={styles.infected_death_recovered_cases_logo} src={recovered_logo} alt="Recovered"/>
                     </CardContent>
                 </Grid>
-                <Grid item component={Card} xs={12} md={3} lg={3} className={cx(styles.card, styles.deaths)}>
+                <Grid item component={Card} xs={12} md={3} lg={3} className={cx(styles.card, styles.deaths, 
+                                                                                styles.deaths_typography_color)}>
                     <CardContent>
-                        <Typography color="textSecondary" gutterBottom>Deaths</Typography>
+                        <Typography gutterBottom><strong>Deaths</strong></Typography>
                         <Typography variant="h5">
                             <CountUp start={0} end={deaths.value} duration={2.5} separator="," />
                         </Typography>
-                        <Typography color="textSecondary">{new Date(lastUpdate).toDateString()}</Typography>
-                        <Typography variant="h5">Number of Active Cases of COVID-19</Typography>
+                        <Typography>{new Date(lastUpdate).toDateString()}</Typography>
+                        {/* <Typography variant="h5">Number of Active Cases of COVID-19</Typography> */}
+                        <img className={styles.infected_death_recovered_cases_logo} src={deaths_logo} alt="Deaths"/>
                     </CardContent>
                 </Grid>
-            </Grid>
+            {/* </Grid> */}
         </div>
       </Paper>
-      </Grid>
+    </Grid>
     )
 }

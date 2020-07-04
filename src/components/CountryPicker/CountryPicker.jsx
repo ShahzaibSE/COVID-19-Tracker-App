@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import {NativeSelect, FormControl, Select, makeStyles, MenuItem} from "@material-ui/core"
+import {NativeSelect, FormControl, Select, makeStyles, Typography} from "@material-ui/core"
 // CSS.
 import styles from "./CountryPicker.module.scss"
 // API.
@@ -33,8 +33,11 @@ export const CountryPicker = ({handleCountryChange}) => {
     },[]) // If keys are changed then state will be updated.
     //
      return (
-       <div className={styles.container}> 
+       <div> 
             <FormControl className={classes.formControl}>
+                <Typography variant="h6" gutterBottom>
+                    <strong>Select Country</strong>
+                </Typography>
                 <Select defaultValue="Global" onChange={(e)=>handleCountryChange(e.target.value)} placeholder="Select Country"> 
                   <option value="">Global</option>
                   {countries.map((country, i) => <option key={i} value={country}>{country}</option>)}
